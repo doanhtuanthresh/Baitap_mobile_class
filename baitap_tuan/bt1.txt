@@ -1,4 +1,4 @@
 1. Mong muốn và định hướng của bạn là gì sau khi học xong môn học này?
--
-2. Theo bạn, trong tương lai gần (10 năm) lặp trình độc cơ phát triển không? Giải thích tại sao?
--
+- Tìm hiểu và thành thạo flutter, đủ khả năng xin việc, định hướng làm lập trình di động.
+2. Theo bạn, trong tương lai gần (10 năm) lặp trình di động có phát triển không? Giải thích tại sao?
+- Có phát triển, lập trình mobile sẽ phát triển theo sự phát triển của điện thoại thông minh!!

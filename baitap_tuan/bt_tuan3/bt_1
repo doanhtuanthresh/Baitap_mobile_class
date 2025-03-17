@@ -1,0 +1,157 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'UI Components',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text('UI Components List')),
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(16),
+        children: [
+          SectionHeader('Display'),
+          UIComponentButton('Text', () => Navigator.push(context, MaterialPageRoute(builder: (context) => TextScreen()))),
+          UIComponentButton('Image', () => Navigator.push(context, MaterialPageRoute(builder: (context) => ImageScreen()))),
+          SectionHeader('Input'),
+          UIComponentButton('TextField', () => Navigator.push(context, MaterialPageRoute(builder: (context) => TextFieldScreen()))),
+          UIComponentButton('PasswordField', () => Navigator.push(context, MaterialPageRoute(builder: (context) => PasswordFieldScreen()))),
+          SectionHeader('Layout'),
+          UIComponentButton('Column', () => Navigator.push(context, MaterialPageRoute(builder: (context) => ColumnScreen()))),
+          UIComponentButton('Row', () => Navigator.push(context, MaterialPageRoute(builder: (context) => RowScreen()))),
+        ],
+      ),
+    );
+  }
+}
+
+Widget UIComponentButton(String title, VoidCallback onTap) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: ElevatedButton(
+      onPressed: onTap,
+      child: Text(title),
+    ),
+  );
+}
+
+Widget SectionHeader(String title) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Text(
+      title,
+      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue),
+    ),
+  );
+}
+
+class TextScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Text Detail')),
+      body: Center(
+        child: Text(
+          'The quick Brown fox jumps over the lazy dog.',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+}
+
+class ImageScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Image Display')),
+      body: Center(
+        child: Image.network('https://images.theconversation.com/files/625049/original/file-20241010-15-95v3ha.jpg?ixlib=rb-4.1.0&rect=4%2C12%2C2679%2C1521&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip'),
+      ),
+    );
+  }
+}
+
+class TextFieldScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('TextField Input')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: TextField(
+          decoration: InputDecoration(labelText: 'Enter text'),
+        ),
+      ),
+    );
+  }
+}
+
+class PasswordFieldScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Password Input')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: TextField(
+          obscureText: true,
+          decoration: InputDecoration(labelText: 'Enter password'),
+        ),
+      ),
+    );
+  }
+}
+
+class ColumnScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Column Layout')),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Item 1'),
+          Text('Item 2'),
+          Text('Item 3'),
+        ],
+      ),
+    );
+  }
+}
+
+class RowScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Row Layout')),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Item A'),
+          SizedBox(width: 10),
+          Text('Item B'),
+          SizedBox(width: 10),
+          Text('Item C'),
+        ],
+      ),
+    );
+  }
+}

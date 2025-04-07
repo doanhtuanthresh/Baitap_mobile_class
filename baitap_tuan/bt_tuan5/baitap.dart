@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -78,7 +80,7 @@ class LoginScreen extends StatelessWidget {
 
 class ProfileScreen extends StatelessWidget {
   final User user;
-  ProfileScreen({super.key, required this.user});
+  const ProfileScreen({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundImage: NetworkImage(user.photoURL ?? 'https://via.placeholder.com/150'),
+              child: Image.asset('assets/profile_picture.png'),
             ),
             SizedBox(height: 10),
             TextField(
